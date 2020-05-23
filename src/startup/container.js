@@ -22,6 +22,9 @@ const container = createContainer();
 const { HomeRoute } = require("../routes/index.routes");
 const RootRouter = require("../routes");
 
+// Models
+const { User, Comment, Idea } = require("../models");
+
 container.register({
   app: asClass(app).singleton(),
   router: asFunction(RootRouter).singleton(),
@@ -49,6 +52,13 @@ container.register({
 // Router Register
 container.register({
   HomeRoute: asFunction(HomeRoute).singleton(), // Es una funcion ya que el modulo es una funcion constructora.
+});
+
+//Models Register
+container.register({
+  User: asValue(User),
+  Idea: asValue(Idea),
+  Comment: asValue(Comment),
 });
 
 // exportamos el container
