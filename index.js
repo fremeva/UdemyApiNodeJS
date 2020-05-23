@@ -8,6 +8,10 @@ const { MONGO_URL } = container.resolve("Config");
 mongoose.set("useCreateIndex", true);
 
 mongoose
-  .connect(MONGO_URL, { useNewUrlParser: true, useFindAndModify: false })
+  .connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
   .then(() => server.start())
   .catch(console.log);
